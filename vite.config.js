@@ -1,4 +1,3 @@
-// vite.config.js
 export default {
-  base: '/Pod-Tshirt-Store/', 
+  base: '/Pod-Tshirt-Store/',
 }
