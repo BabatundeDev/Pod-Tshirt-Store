@@ -73,18 +73,17 @@ class BodyMeasurements extends LitElement {
 
     .flat-preview .overlay-text {
       position: absolute;
-      top: 15%;
-      left: 50%;
-      transform: translateX(-50%);
+      top: 40%;
+      transform: translate(-50%, -50%);
       text-align: center;
       padding: 4px 8px;
-      background: rgba(255, 255, 255, 0.7);
       font-weight: bold;
       font-size: 1.1rem;
-      color: #222;
+      color: #fff;
       word-break: break-word;
       max-width: 90%;
-    }
+}
+
 
     .layout-container {
       display: flex;
@@ -229,7 +228,7 @@ class BodyMeasurements extends LitElement {
 
       <div class="layout-container ${this.layout}">
         ${this.layout === "3d" || this.layout === "side-by-side"
-          ? html`
+        ? html`
               <tshirt-viewer
                 .imageUrl=${this.uploadedImage}
                 .printText=${this.printText}
@@ -239,22 +238,22 @@ class BodyMeasurements extends LitElement {
                 .build=${this.build}
               ></tshirt-viewer>
             `
-          : ""}
+        : ""}
         ${this.layout === "preview" || this.layout === "side-by-side"
-          ? html`
+        ? html`
               <div class="flat-preview">
                 <div class="tshirt">
                   ${this.uploadedImage
-                    ? html`<img
+            ? html`<img
                         src="${this.uploadedImage}"
                         alt="Uploaded Image"
                       />`
-                    : html`<p>No image selected</p>`}
+            : html`<p>No image selected</p>`}
                   <div class="overlay-text">${this.printText}</div>
                 </div>
               </div>
             `
-          : ""}
+        : ""}
       </div>
 
       <p>Selected product: ${this.productType ?? "tshirt"}</p>

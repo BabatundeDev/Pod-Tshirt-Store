@@ -16,7 +16,8 @@ export class TshirtViewer extends LitElement {
     :host {
       display: block;
       text-align: center;
-    }
+      background: white;
+    } 
 
     #canvas-container {
       margin: auto;
@@ -29,6 +30,7 @@ export class TshirtViewer extends LitElement {
       height: 100%;
       border: 1px solid #ccc;
       border-radius: 12px;
+      background: white;
     }
   `;
 
@@ -65,21 +67,23 @@ export class TshirtViewer extends LitElement {
   }
 
   initThreeJS() {
-    this.scene = new THREE.Scene();
-    this.camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
-    this.camera.position.z = 5;
+  this.scene = new THREE.Scene();
+  this.scene.background = new THREE.Color("#ffffff"); // ← Set background to white
 
-    this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    this.renderer.setSize(400, 400);
-    this.shadowRoot
-      .querySelector("#canvas-container")
-      .appendChild(this.renderer.domElement);
+  this.camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+  this.camera.position.z = 5;
 
-    const light = new THREE.HemisphereLight(0xffffff, 0x444444, 1);
-    this.scene.add(light);
+  this.renderer = new THREE.WebGLRenderer({ antialias: true });
+  this.renderer.setSize(400, 400);
+  this.shadowRoot
+    .querySelector("#canvas-container")
+    .appendChild(this.renderer.domElement);
 
-    this.animate();
-  }
+  const light = new THREE.HemisphereLight(0xffffff, 0x444444, 1);
+  this.scene.add(light);
+
+  this.animate();
+}
 
   loadModel(productType) {
     const loader = new GLTFLoader();
@@ -105,7 +109,7 @@ export class TshirtViewer extends LitElement {
           this.scene.remove(this.shirt);
         }
         const geometry = new THREE.BoxGeometry(2, 2.5, 1);
-        const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
+        const material = new THREE.MeshStandardMaterial({ color: 0xff0000 });
         this.shirt = new THREE.Mesh(geometry, material);
         this.scene.add(this.shirt);
 
