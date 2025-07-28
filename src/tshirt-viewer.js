@@ -67,23 +67,23 @@ export class TshirtViewer extends LitElement {
   }
 
   initThreeJS() {
-  this.scene = new THREE.Scene();
-  this.scene.background = new THREE.Color("#ffffff"); // ← Set background to white
+    this.scene = new THREE.Scene();
+    this.scene.background = new THREE.Color("#ffffff"); // ← Set background to white
 
-  this.camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
-  this.camera.position.z = 5;
+    this.camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+    this.camera.position.z = 5;
 
-  this.renderer = new THREE.WebGLRenderer({ antialias: true });
-  this.renderer.setSize(400, 400);
-  this.shadowRoot
-    .querySelector("#canvas-container")
-    .appendChild(this.renderer.domElement);
+    this.renderer = new THREE.WebGLRenderer({ antialias: true });
+    this.renderer.setSize(400, 400);
+    this.shadowRoot
+      .querySelector("#canvas-container")
+      .appendChild(this.renderer.domElement);
 
-  const light = new THREE.HemisphereLight(0xffffff, 0x444444, 1);
-  this.scene.add(light);
+    const light = new THREE.HemisphereLight(0xffffff, 0x444444, 1);
+    this.scene.add(light);
 
-  this.animate();
-}
+    this.animate();
+  }
 
   loadModel(productType) {
     const loader = new GLTFLoader();
@@ -163,8 +163,8 @@ export class TshirtViewer extends LitElement {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // black text
-    ctx.fillStyle = "black";
-    ctx.font = "40px Arial";
+    ctx.fillStyle = "white";
+    ctx.font = "bold 60px sans-serif";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillText(text, canvas.width / 2, canvas.height / 2);
