@@ -72,18 +72,20 @@ class BodyMeasurements extends LitElement {
     }
 
     .flat-preview .overlay-text {
-      position: absolute;
-      top: 40%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      padding: 4px 8px;
-      font-weight: bold;
-      font-size: 1.1rem;
-      color: #fff;
-      word-break: break-word;
-      max-width: 90%;
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 0; /* Remove padding */
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: white !important; /* Enforce white */
+  background: transparent !important; /* Remove background */
+  word-break: break-word;
+  max-width: 90%;
 }
-
 
     .layout-container {
       display: flex;
